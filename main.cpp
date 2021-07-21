@@ -1,7 +1,39 @@
 #include "CrcyHead.h"
-//*Var*
+const int m=11,n=11;
+int mx=1,my=1;
+int g[101][101];
+struct blocks
+{
+    int row,col,dire;
+    blocks(int _row,int _col,int _dire)
+    {
+        row = _row;
+        col = _col;
+        dire = _dire;
+    }
+};vector<blocks> myBlocks;
+struct point
+{
+    int x,y;
+}st,ed;
+void inIt()
+{
+    memset(g,wall,sizeof(g));
+    g[1][1] = nothing;
+    st.x = st.y = 1;
+}
+void findBlock()
+{
+    if(mx+1 <= m && g[mx+1][my] == wall)
+        myBlocks.push_back(blocks(mx+1,my,d));
+    if(my+1 <= n && g[mx][my+1] == wall)
+        myBlocks.push_back(blocks(mx,my+1,r));
+    if(mx-1 <= m && g[mx-1][my] == wall)
+        myBlocks.push_back(blocks(mx-1,my,d));
+    if(my-1 <= n && g[mx][my-1] == wall)
+        myBlocks.push_back(blocks(mx,my-1,l));
+}
 
-//*Var*
 int main()
 {
     inIt();
@@ -47,5 +79,6 @@ int main()
         }
         printf("\n");
     }
+    getchar();getchar();
     return 0;
 }
